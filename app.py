@@ -28,9 +28,17 @@ def get_coordinates(address):
         st.error(f"Geocoding service is unavailable: {e}")
         return None
 
+# Determine the environment and get the Google Maps API key
+if os.getenv("WEBSITE_HOSTNAME"):
+    # Running in Azure Web App
+    google_maps_api_key = os.getenv("AZURE_GOOGLE_MAPS_API_KEY")
+else:
+    # Running locally
+    google_maps_api_key = os.getenv("GOOGLE_MAPS_API_KEY")
+
 @st.cache_data
 def cached_calculate_route_distance(coord1, coord2, mode):
-    gmaps = googlemaps.Client(key=os.getenv("GOOGLE_MAPS_API_KEY"))
+    gmaps = googlemaps.Client(key=google_maps_api_key)
     try:
         result = gmaps.distance_matrix(origins=[coord1], destinations=[coord2], mode=mode)
         distance = result['rows'][0]['elements'][0]['distance']['value'] / 1000  # Convert meters to kilometers
