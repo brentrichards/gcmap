@@ -1,6 +1,6 @@
 # Gold Coast Distance Calculator (app2.py)
 
-`app2.py` is a Streamlit application that calculates the distance from a user-provided address to a selected hospital in Queensland. It also identifies the nearest and next-nearest train stations and tram stops to the user's location. The application provides an interactive map to visualize these locations and their distances.
+`app.py` is a Streamlit application that calculates the distance from a user-provided address to a selected hospital in Queensland. It also identifies the nearest and next-nearest train stations and tram stops to the user's location. The application provides an interactive map to visualize these locations and their distances.
 
 ## Features
 
@@ -30,7 +30,7 @@
 
 3. Run the application:
    ```bash
-   streamlit run app2.py
+   streamlit run app.py
    ```
 
 4. Open the application in your browser and enter your address (street and suburb) to calculate distances and view the map.
